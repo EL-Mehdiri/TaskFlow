@@ -135,15 +135,15 @@ const ChartTask = ({
           <h2>Task Status</h2>
           <Doughnut data={doughnutData} />
         </div>
-        <div className="max-w-lg h-96 ">
+        <div className="max-w-lg h-[500px]">
           <h2>Tasks by Priority</h2>
           <Bar data={priorityData} />
         </div>
       </div>
-      <div className=" h-96 ">
+      {/* <div className=" h-96 ">
         <h2>Tasks Over Time</h2>
         <Line data={lineData} />
-      </div>
+      </div> */}
     </>
   );
 };
