@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import vector from "../assets/signin.jpg";
 
@@ -81,10 +81,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="grid lg:grid-cols-2 md:grid-cols-1 mx-auto p-10 ">
-      <div className="max-w-2xl ">
-        <img src={vector} alt="" className="" />
-      </div>
+    <>
       {forgotPassword ? (
         <ForgotPassword
           hovered={hovered}
@@ -92,99 +89,104 @@ export default function SignIn() {
           setforgotPassword={setforgotPassword}
         />
       ) : (
-        <div className="image max-w-3xl p-16  my-20 rounded-xl shadow-xl ">
-          <h1 className="text-3xl font-bold p-3 text-center mb-8">Sign In</h1>
-
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="email"
-              placeholder="Email"
-              id="email"
-              className={`bg-white rounded-lg p-3 outline-violet-400 ${
-                errors.email ? "border-red-500" : ""
-              }`}
-              onChange={handleChange}
-              value={formData.email || ""}
-            />
-            {errors.email && <p className="text-red-500">{errors.email}</p>}
-            <input
-              type="password"
-              placeholder="Password"
-              id="password"
-              className={`bg-white rounded-lg p-3 outline-violet-400 ${
-                errors.password ? "border-red-500" : ""
-              }`}
-              onChange={handleChange}
-              value={formData.password || ""}
-            />
-            {errors.password && (
-              <p className="text-red-500">{errors.password}</p>
-            )}
-            <button
-              disabled={loading}
-              className="relative bg-[#967DFC] text-white text-lg p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 w-full overflow-hidden"
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-            >
-              <span
-                className="absolute right-0 top-0 bottom-0 bg-gradient-to-l from-transparent to-white w-0 transition-all duration-300"
-                style={{ width: hovered ? "100%" : "0%" }}
-              ></span>
-              {loading ? "Loading..." : "Sign In"}
-            </button>
-            <OAuth />
-          </form>
-          <div className="flex gap-2 mt-5">
-            <p className="text-lg self-center text-[#313538]">
-              Don&apos;t have an account?
-            </p>
-            <Link to="/sign-up">
-              <span className="text-[#ffffff] text-xl">Sign up</span>
-            </Link>
+        <div className="grid lg:grid-cols-2 md:grid-cols-1 mx-auto p-10 ">
+          <div className="max-w-2xl ">
+            <img src={vector} alt="" className="" />
           </div>
-          <button
-            className={`text-red-600 underline  transition text-lg duration-150 ease-in-out hover:text-slute-600 focus:text-blue-600 active:text-blue-700`}
-            onClick={() => setforgotPassword(true)}
-          >
-            forgot Password ?
-          </button>
+          <div className="image max-w-3xl p-16  my-20 rounded-xl shadow-xl ">
+            <h1 className="text-3xl font-bold p-3 text-center mb-8">Sign In</h1>
 
-          <p className="text-red-500 mt-5">
-            {error ? error.message || "Something went wrong!" : ""}
-          </p>
-          <div className=" ">
-            <details className="group">
-              <summary className="flex opacity-70 justify-between items-center font-medium cursor-pointer list-none">
-                <h4 className="text-lg self-center text-white">
-                  For testing purposes:
-                </h4>
-
-                <span className="transition group-open:rotate-180">
-                  <svg
-                    fill="none"
-                    height="24"
-                    shapeRendering="geometricPrecision"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                    width="24"
-                  >
-                    <path d="M6 9l6 6 6-6"></path>
-                  </svg>
-                </span>
-              </summary>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                className={`bg-white rounded-lg p-3 outline-violet-400 ${
+                  errors.email ? "border-red-500" : ""
+                }`}
+                onChange={handleChange}
+                value={formData.email || ""}
+              />
+              {errors.email && <p className="text-red-500">{errors.email}</p>}
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                className={`bg-white rounded-lg p-3 outline-violet-400 ${
+                  errors.password ? "border-red-500" : ""
+                }`}
+                onChange={handleChange}
+                value={formData.password || ""}
+              />
+              {errors.password && (
+                <p className="text-red-500">{errors.password}</p>
+              )}
               <button
-                className="mt-4 bg-white hover:bg-gray-200 text-[#313538] text-lg py-2 px-4 rounded"
-                onClick={fillCredentials}
+                disabled={loading}
+                className="relative bg-[#967DFC] text-white text-lg p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 w-full overflow-hidden"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
               >
-                Fill Credentials
+                <span
+                  className="absolute right-0 top-0 bottom-0 bg-gradient-to-l from-transparent to-white w-0 transition-all duration-300"
+                  style={{ width: hovered ? "100%" : "0%" }}
+                ></span>
+                {loading ? "Loading..." : "Sign In"}
               </button>
-            </details>
+              <OAuth />
+            </form>
+            <div className="flex gap-2 mt-5">
+              <p className="text-lg self-center text-[#313538]">
+                Don&apos;t have an account?
+              </p>
+              <Link to="/sign-up">
+                <span className="text-[#ffffff] text-xl">Sign up</span>
+              </Link>
+            </div>
+            <button
+              className={`text-red-600 underline  transition text-lg duration-150 ease-in-out hover:text-slute-600 focus:text-blue-600 active:text-blue-700`}
+              onClick={() => setforgotPassword(true)}
+            >
+              forgot Password ?
+            </button>
+
+            <p className="text-red-500 mt-5">
+              {error ? error.message || "Something went wrong!" : ""}
+            </p>
+            <div className=" ">
+              <details className="group">
+                <summary className="flex opacity-70 justify-between items-center font-medium cursor-pointer list-none">
+                  <h4 className="text-lg self-center text-white">
+                    For testing purposes:
+                  </h4>
+
+                  <span className="transition group-open:rotate-180">
+                    <svg
+                      fill="none"
+                      height="24"
+                      shapeRendering="geometricPrecision"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.5"
+                      viewBox="0 0 24 24"
+                      width="24"
+                    >
+                      <path d="M6 9l6 6 6-6"></path>
+                    </svg>
+                  </span>
+                </summary>
+                <button
+                  className="mt-4 bg-white hover:bg-gray-200 text-[#313538] text-lg py-2 px-4 rounded"
+                  onClick={fillCredentials}
+                >
+                  Fill Credentials
+                </button>
+              </details>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

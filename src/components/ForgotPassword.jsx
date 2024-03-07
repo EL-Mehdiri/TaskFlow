@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import vector from "../assets/password.jpg";
 
 const ForgotPassword = ({ setforgotPassword, setHovered, hovered }) => {
   const [email, setEmail] = useState("");
@@ -50,55 +51,59 @@ const ForgotPassword = ({ setforgotPassword, setHovered, hovered }) => {
   };
 
   return (
-    <div className="password max-w-3xl p-16  my-20 rounded-xl shadow-xl  ">
-      
-      <div className=" text-center p-3 mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 ">Forgot Password?</h1>
-        <p className="mt-2  text-gray-900 ">
-          Remember your password?{" "}
+    <div className="grid lg:grid-cols-2 md:grid-cols-1 mx-auto p-10 ">
+      <div className="max-w-2xl ">
+        <img src={vector} alt="" className="" />
+      </div>
+      <div className="password max-w-3xl p-16  my-20 rounded-xl shadow-xl  ">
+        <div className=" text-center p-3 mb-8">
+          <h1 className="text-3xl font-bold text-gray-800 ">
+            Forgot Password?
+          </h1>
+          <p className="mt-2  text-gray-900 ">
+            Remember your password?{" "}
+            <button
+              className={`text-white underline  transition text-lg duration-150 ease-in-out hover:text-slute-600 focus:text-blue-600 active:text-blue-700 `}
+              onClick={() => setforgotPassword(false)}
+            >
+              Sign In
+            </button>
+          </p>
+        </div>
+
+        {message && <p className=" pb-4">{message}</p>}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            className={`bg-white rounded-lg p-3 outline-violet-400 `}
+            onChange={handleEmailChange}
+          />
           <button
-            className={`text-white underline  transition text-lg duration-150 ease-in-out hover:text-slute-600 focus:text-blue-600 active:text-blue-700 `}
-            onClick={() => setforgotPassword(false)}
+            disabled={loading}
+            className="relative bg-[#967DFC] text-white text-lg p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 w-full overflow-hidden"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
           >
-            Sign In
+            <span
+              className="absolute right-0 top-0 bottom-0 bg-gradient-to-l from-transparent to-white w-0 transition-all duration-300"
+              style={{ width: hovered ? "100%" : "0%" }}
+            ></span>
+            {loading ? "Loading..." : "Reset Password"}
           </button>
-        </p>
-      </div>
+        </form>
+        <div className="flex gap-2 mt-5">
+          <p className="text-lg self-center text-[#313538]">
+            Don&apos;t have an account?
+          </p>
+          <Link to="/sign-up">
+            <span className="text-[#ffffff] text-xl">Sign up</span>
+          </Link>
+        </div>
 
-      {message && <p className=" pb-4">{message}</p>}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          className={`bg-white rounded-lg p-3 outline-violet-400 `}
-          onChange={handleEmailChange}
-        />
-        <button
-          disabled={loading}
-          className="relative bg-[#967DFC] text-white text-lg p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 w-full overflow-hidden"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
-          <span
-            className="absolute right-0 top-0 bottom-0 bg-gradient-to-l from-transparent to-white w-0 transition-all duration-300"
-            style={{ width: hovered ? "100%" : "0%" }}
-          ></span>
-          {loading ? "Loading..." : "Reset Password"}
-        </button>
-      </form>
-      <div className="flex gap-2 mt-5">
-        <p className="text-lg self-center text-[#313538]">
-          Don&apos;t have an account?
-        </p>
-        <Link to="/sign-up">
-          <span className="text-[#ffffff] text-xl">Sign up</span>
-        </Link>
+        <p className="text-red-500 mt-5">{error ? error : ""}</p>
       </div>
-
-      <p className="text-red-500 mt-5">
-        {error ? error : "Something went wrong!"}
-      </p>
     </div>
   );
 };
