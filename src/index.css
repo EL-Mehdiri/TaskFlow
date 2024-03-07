@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom FullCalendar styles */
+.fc {
+    font-family: Arial, sans-serif;
+    /* Set font family for the calendar */
+}
+
+/* Header styles */
+.fc-header-toolbar {
+    background-color: #686767;
+    /* Set header background color */
+    color: #fff;
+    /* Set header text color */
+}
+
+/* Button styles */
+.fc-button {
+    background-color: #757575;
+    /* Set button background color */
+    color: #fff;
+    /* Set button text color */
+    border-color: #007bff;
+    /* Set button border color */
+}
+
+/* Event styles */
+.fc-event {
+    background-color: #007bff;
+    /* Set event background color */
+    color: #fff;
+    /* Set event text color */
+    border-color: #007bff;
+    /* Set event border color */
+}
+
+/* Event title styles */
+.fc-event-title {
+    font-size: 14px;
+    /* Set event title font size */
+    font-weight: bold;
+    /* Set event title font weight */
+}
+
+/* Today's date styles */
+.fc-today {
+    background-color: #f0f0f0;
+    /* Set today's background color */
+    color: #333;
+    /* Set today's text color */
+}
+
+/* Day cell styles */
+.fc-dayGridDay {
+    border: 1px solid #ddd;
+    /* Set border color for day cells */
+}
+
+/* Date number styles */
+.fc-daygrid-day-number {
+    font-size: 14px;
+    /* Set date number font size */
+    color: #333;
+    /* Set date number text color */
+}
+
+.image{
+    background: linear-gradient(268deg, #FFABFC 0%, #967DFC 100.64%);
+}
+
