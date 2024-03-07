@@ -219,11 +219,14 @@ const ProjectDetails = () => {
       try {
         dispatch(creatTaskStart());
         formData.project_id = project._id;
-        const res = await fetch("/api/tasks", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+        const res = await fetch(
+          "https://task-manager-copy.onrender.com/api/tasks",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          }
+        );
         const data = await res.json();
         // Fetch collaborator
         if (formData.collaborator) {
