@@ -331,7 +331,9 @@ const ProjectDetails = () => {
 
           <div className=" text-left flex justify-between gap-4 ">
             <button
-              className="border border-neutral-300 rounded-lg  py-1.5 px-10 my-2 bg-[#967DFC]  text-white  text-lg hover:translate-x-3  w-fit h-fit "
+              className={`border border-neutral-300 rounded-lg  py-1.5 px-10 my-2 bg-[#967DFC]  text-white  text-lg hover:translate-x-3  w-fit h-fit ${
+                chart && "hidden"
+              }`}
               onClick={() => setOpen(true)}
             >
               Create Task
@@ -377,15 +379,15 @@ const ProjectDetails = () => {
             )}
           </div>
         </div>
-        <div className="flex gap-5 p-4 items-center justify-end">
+        <div className="flex gap-5 py-4 items-center ">
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="border border-neutral-300 rounded-lg transition-colors duration-200 hover:bg-[#6b46ff]  py-1.5 px-10 my-2 bg-[#967DFC]  text-white  text-lg   w-fit h-fit"
             onClick={() => setChart(false)}
           >
             Tasks
           </button>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="border border-neutral-300 transition-colors duration-200 hover:bg-[#6b46ff] rounded-lg  py-1.5 px-10 my-2 bg-[#967DFC]  text-white  text-lg  w-fit h-fit"
             onClick={() => setChart(true)}
           >
             Charts

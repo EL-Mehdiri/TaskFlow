@@ -103,15 +103,16 @@ const ChartTask = ({
   };
 
   // Calculate data for Bar chart based on priority
+  const allTasks = [...pendingTasks, ...inProgressTasks, ...completedTasks];
   const priorityData = {
     labels: ["Low", "Medium", "High"],
     datasets: [
       {
         label: "Priority",
         data: [
-          completedTasks.filter((task) => task.priority === "low").length,
-          completedTasks.filter((task) => task.priority === "medium").length,
-          completedTasks.filter((task) => task.priority === "high").length,
+          allTasks.filter((task) => task.priority === "low").length,
+          allTasks.filter((task) => task.priority === "medium").length,
+          allTasks.filter((task) => task.priority === "high").length,
         ],
         backgroundColor: [
           "rgba(255, 206, 86, 0.6)",
@@ -131,12 +132,12 @@ const ChartTask = ({
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-        <div className="max-w-lg h-96 ">
-          <h2>Task Status</h2>
+        <div className=" h-96 ">
+          <h2 className="pb-4 text-lg">Task Status:</h2>
           <Doughnut data={doughnutData} />
         </div>
-        <div className="max-w-lg h-[500px]">
-          <h2>Tasks by Priority</h2>
+        <div className=" h-96">
+          <h2 className="pb-4 text-lg">Tasks by Priority:</h2>
           <Bar data={priorityData} />
         </div>
       </div>
