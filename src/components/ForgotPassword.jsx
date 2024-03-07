@@ -49,7 +49,7 @@ const ForgotPassword = ({ setforgotPassword, setHovered, hovered }) => {
   };
 
   return (
-    <div className="image max-w-3xl p-16  my-20 rounded-xl shadow-xl ">
+    <div className="password max-w-3xl p-16  my-20 rounded-xl shadow-xl ">
       <div className=" text-center p-3 mb-8">
         <h1 className="text-3xl font-bold text-gray-800 ">Forgot Password?</h1>
         <p className="mt-2  text-gray-900 ">

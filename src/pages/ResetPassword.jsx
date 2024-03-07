@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import vector from "../assets/signin.jpg";
+import vector from "../assets/password.jpg";
 
 const ResetPassword = () => {
   const location = useLocation();

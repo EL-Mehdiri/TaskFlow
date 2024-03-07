@@ -69,4 +69,7 @@
 .image{
     background: linear-gradient(268deg, #FFABFC 0%, #967DFC 100.64%);
 }
+.password{
+    background: linear-gradient(90deg,#fff7ad,#ffa9f9 );
 
+}
