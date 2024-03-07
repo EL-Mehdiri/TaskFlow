@@ -106,7 +106,7 @@ export default function Profile() {
   const handleSignOut = async () => {
     try {
       localStorage.clear();
-      await fetch("/api/auth/signout");
+      await fetch("https://task-manager-copy.onrender.com/api/auth/signout");
       dispatch(signOut());
     } catch (error) {
       console.log(error);
