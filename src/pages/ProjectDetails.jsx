@@ -18,6 +18,7 @@ import DeleteConfirmationToast from "../components/DeleteConfirmationToast";
 import TaskItem from "../components/TaskItem";
 import Spinner from "../components/Spinner";
 import ChartTask from "../components/ChartTask";
+import { formatDate } from "../utils/utils";
 // import { formatDate } from "../utils/utils";
 
 const ProjectDetails = () => {
@@ -159,6 +160,10 @@ const ProjectDetails = () => {
 
   // Update Task Function
   const updateTask = async (taskId, updatedData) => {
+    if (updatedData.due_date > project.end_date) {
+      toast.error("Due date cannot be after project end date.");
+      return;
+    }
     try {
       dispatch(updateTaskStart());
 
@@ -216,6 +221,10 @@ const ProjectDetails = () => {
       // If _id exists, it means it's an update "taskId"
       updateTask(formData._id, formData);
     } else {
+      if (formData.due_date > project.end_date) {
+        toast.error("Due date cannot be after project end date.");
+        return;
+      }
       try {
         dispatch(creatTaskStart());
         formData.project_id = project._id;
