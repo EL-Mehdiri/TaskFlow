@@ -161,7 +161,11 @@ const ProjectDetails = () => {
   // Update Task Function
   const updateTask = async (taskId, updatedData) => {
     if (updatedData.due_date > project.end_date) {
-      toast.error("Due date cannot be after project end date.");
+      toast.error(
+        `Due date cannot be after project end date. """${formatDate(
+          project.end_date
+        )}"""`
+      );
       return;
     }
     try {
@@ -222,7 +226,11 @@ const ProjectDetails = () => {
       updateTask(formData._id, formData);
     } else {
       if (formData.due_date > project.end_date) {
-        toast.error("Due date cannot be after project end date.");
+        toast.error(
+          `Due date cannot be after project end date. """${formatDate(
+            project.end_date
+          )}"""`
+        );
         return;
       }
       try {
