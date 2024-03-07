@@ -1,6 +1,14 @@
 /* eslint-disable react/prop-types */
-
+import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Doughnut, Line, Bar } from "react-chartjs-2";
+
+// defaults.maintainAspectRatio = false;
+// defaults.responsive = true;
+
+// defaults.plugins.title.display = true;
+// defaults.plugins.title.align = "start";
+// defaults.plugins.title.font.size = 20;
+// defaults.plugins.title.color = "black";
 
 const ChartTask = ({
   pendingTasks,
@@ -101,10 +109,9 @@ const ChartTask = ({
       {
         label: "Priority",
         data: [
-          // completedTasks.filter((task) => task.priority === "low").length,
-          // completedTasks.filter((task) => task.priority === "medium").length,
-          // completedTasks.filter((task) => task.priority === "high").length,
-          10, 20, 30,
+          completedTasks.filter((task) => task.priority === "low").length,
+          completedTasks.filter((task) => task.priority === "medium").length,
+          completedTasks.filter((task) => task.priority === "high").length,
         ],
         backgroundColor: [
           "rgba(255, 206, 86, 0.6)",
@@ -124,18 +131,18 @@ const ChartTask = ({
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-        <div className="max-w-lg">
+        <div className="max-w-lg h-96 ">
           <h2>Task Status</h2>
-          {/* <Doughnut data={doughnutData} /> */}
+          <Doughnut data={doughnutData} />
         </div>
-        <div>
+        <div className="max-w-lg h-96 ">
           <h2>Tasks by Priority</h2>
-          {/* <Bar data={priorityData} /> */}
+          <Bar data={priorityData} />
         </div>
       </div>
-      <div>
+      <div className=" h-96 ">
         <h2>Tasks Over Time</h2>
-        {/* <Line data={lineData} /> */}
+        <Line data={lineData} />
       </div>
     </>
   );

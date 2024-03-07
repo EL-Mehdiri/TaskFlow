@@ -24,16 +24,6 @@ export default function SignIn() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
-  useEffect(() => {
-    const project = async () => {
-      const res = await fetch(
-        "https://task-manager-copy.onrender.com/api/projects"
-      );
-      const data = await res.json();
-      console.log(data);
-    };
-    project();
-  }, []);
 
   const validateForm = () => {
     const errors = {};
