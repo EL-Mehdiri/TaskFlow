@@ -155,7 +155,7 @@ export default function SignIn() {
           <div className=" ">
             <details className="group">
               <summary className="flex opacity-70 justify-between items-center font-medium cursor-pointer list-none">
-                <h4 className="text-lg self-center text-[#313538]">
+                <h4 className="text-lg self-center text-white">
                   For testing purposes:
                 </h4>
 
@@ -176,7 +176,7 @@ export default function SignIn() {
                 </span>
               </summary>
               <button
-                className="mt-4 bg-white hover:bg-gray-200 text-[#313538] font-bold py-2 px-4 rounded"
+                className="mt-4 bg-white hover:bg-gray-200 text-[#313538] text-lg py-2 px-4 rounded"
                 onClick={fillCredentials}
               >
                 Fill Credentials
