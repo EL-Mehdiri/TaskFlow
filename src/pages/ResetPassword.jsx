@@ -28,6 +28,11 @@ const ResetPassword = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Password validation
+    if (!password || password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
