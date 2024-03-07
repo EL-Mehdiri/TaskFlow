@@ -12,7 +12,9 @@ export default function Project() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch("/api/projects");
+        const res = await fetch(
+          "https://task-manager-copy.onrender.com/api/projects"
+        );
         const data = await res.json();
 
         // Check if projects are available
@@ -22,7 +24,9 @@ export default function Project() {
               let ownerName = "";
               let ownerPhoto = "";
               if (project.owner) {
-                const ownerRes = await fetch(`/api/user/${project.owner}`);
+                const ownerRes = await fetch(
+                  `https://task-manager-copy.onrender.com/api/user/${project.owner}`
+                );
                 const ownerData = await ownerRes.json();
                 ownerName = ownerData.username;
                 ownerPhoto = ownerData.profilePicture;
@@ -31,7 +35,7 @@ export default function Project() {
               const collaboratorData = await Promise.all(
                 (project.collaborators || []).map(async (collaboratorId) => {
                   const collaboratorRes = await fetch(
-                    `/api/user/${collaboratorId}`
+                    `https://task-manager-copy.onrender.com/api/user/${collaboratorId}`
                   );
                   if (collaboratorRes.ok) {
                     return await collaboratorRes.json();

@@ -37,7 +37,9 @@ const ProjectDetails = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(`/api/projects/${id}`);
+        const res = await fetch(
+          `https://task-manager-copy.onrender.com/api/projects/${id}`
+        );
         if (!res.ok) {
           throw new Error("Failed to fetch project");
         }
@@ -48,7 +50,7 @@ const ProjectDetails = () => {
           const collaboratorDetails = await Promise.all(
             projectData.collaborators.map(async (collaboratorId) => {
               const collaboratorRes = await fetch(
-                `/api/user/${collaboratorId}`
+                `https://task-manager-copy.onrender.com/api/user/${collaboratorId}`
               );
               if (collaboratorRes.ok) {
                 return await collaboratorRes.json();
@@ -73,7 +75,9 @@ const ProjectDetails = () => {
 
     const fetchUserById = async (userId) => {
       try {
-        const res = await fetch(`/api/user/${userId}`);
+        const res = await fetch(
+          `https://task-manager-copy.onrender.com/api/user/${userId}`
+        );
         if (!res.ok) {
           throw new Error("Failed to fetch user");
         }
@@ -86,7 +90,9 @@ const ProjectDetails = () => {
 
     const fetchTasks = async () => {
       try {
-        const res = await fetch(`/api/tasks?project_id=${id}`);
+        const res = await fetch(
+          `https://task-manager-copy.onrender.com/api/tasks?project_id=${id}`
+        );
         if (!res.ok) {
           throw new Error("Failed to fetch tasks");
         }
@@ -96,7 +102,7 @@ const ProjectDetails = () => {
           data.map(async (task) => {
             if (task.collaborator) {
               const collaboratorRes = await fetch(
-                `/api/user/${task.collaborator}`
+                `https://task-manager-copy.onrender.com/api/user/${task.collaborator}`
               );
               if (collaboratorRes.ok) {
                 const collaboratorData = await collaboratorRes.json();
@@ -121,12 +127,15 @@ const ProjectDetails = () => {
   // deleteProject
   const deleteHandler = async (projectId) => {
     try {
-      const res = await fetch(`/api/projects/${projectId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://task-manager-copy.onrender.com/api/projects/${projectId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         console.log(data.message);
@@ -153,11 +162,14 @@ const ProjectDetails = () => {
     try {
       dispatch(updateTaskStart());
 
-      const res = await fetch(`/api/tasks/${taskId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedData),
-      });
+      const res = await fetch(
+        `https://task-manager-copy.onrender.com/api/tasks/${taskId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedData),
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         throw new Error(data.message);
@@ -166,7 +178,7 @@ const ProjectDetails = () => {
       // If the task has a collaborator, fetch the collaborator's data
       if (updatedData.collaborator) {
         const collaboratorRes = await fetch(
-          `/api/user/${updatedData.collaborator}`
+          `https://task-manager-copy.onrender.com/api/user/${updatedData.collaborator}`
         );
         if (collaboratorRes.ok) {
           const collaboratorData = await collaboratorRes.json();
@@ -216,7 +228,7 @@ const ProjectDetails = () => {
         // Fetch collaborator
         if (formData.collaborator) {
           const collaboratorRes = await fetch(
-            `/api/user/${formData.collaborator}`
+            `https://task-manager-copy.onrender.com/api/user/${formData.collaborator}`
           );
           if (collaboratorRes.ok) {
             const collaboratorData = await collaboratorRes.json();
@@ -249,12 +261,15 @@ const ProjectDetails = () => {
 
   const handleTaskDelete = async (taskId) => {
     try {
-      const res = await fetch(`/api/tasks/${taskId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://task-manager-copy.onrender.com/api/tasks/${taskId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await res.json();
       if (!res.ok) {
         console.log(data.message);

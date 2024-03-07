@@ -35,13 +35,16 @@ const ResetPassword = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("/api/auth/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token, password }),
-      });
+      const response = await fetch(
+        "https://task-manager-copy.onrender.com/api/auth/reset-password",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token, password }),
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         setMessage(data.message);

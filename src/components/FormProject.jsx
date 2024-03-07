@@ -66,14 +66,17 @@ const FormProject = ({ project, users, loadingUser }) => {
     try {
       if (project) {
         dispatch(updateProjectStart());
-        const res = await fetch(`/api/projects/${project?._id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...formData,
-            collaborators: formData.collaborators,
-          }),
-        });
+        const res = await fetch(
+          `https://task-manager-copy.onrender.com/api/projects/${project?._id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ...formData,
+              collaborators: formData.collaborators,
+            }),
+          }
+        );
         const data = await res.json();
         if (data.success === false) {
           throw new Error(data.message || "Update project failed");
@@ -84,11 +87,14 @@ const FormProject = ({ project, users, loadingUser }) => {
       } else {
         dispatch(creatProjectStart());
         formData.userId = userId;
-        const res = await fetch("/api/projects", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+        const res = await fetch(
+          "https://task-manager-copy.onrender.com/api/projects",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          }
+        );
         const data = await res.json();
         if (data.success === false) {
           throw new Error(data.message || "Create project failed");

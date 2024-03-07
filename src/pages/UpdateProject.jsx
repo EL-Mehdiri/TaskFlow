@@ -9,7 +9,9 @@ const UpdateProject = () => {
   const [loadingUser, setLoadingUser] = useState(true);
   const fetchProject = async () => {
     try {
-      const res = await fetch(`/api/projects/${id}`);
+      const res = await fetch(
+        `https://task-manager-copy.onrender.com/api/projects/${id}`
+      );
       if (!res.ok) {
         console.log("Failed to fetch project");
       }
@@ -21,7 +23,9 @@ const UpdateProject = () => {
   };
   const fetchUsers = async () => {
     try {
-      const res = await fetch(`/api/user`);
+      const res = await fetch(
+        `https://task-manager-copy.onrender.com/api/user`
+      );
       if (!res.ok) {
         throw new Error("Failed to fetch user");
       }

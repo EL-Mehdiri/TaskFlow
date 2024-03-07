@@ -19,13 +19,16 @@ const ForgotPassword = ({ setforgotPassword, setHovered, hovered }) => {
     }
     try {
       setLoading(true);
-      const res = await fetch("/api/auth/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const res = await fetch(
+        "https://task-manager-copy.onrender.com/api/auth/forgot-password",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
       const data = await res.json();
       if (res.ok) {
         setMessage(data.message);

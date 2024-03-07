@@ -11,7 +11,7 @@ export const formatDate = (dateString) => {
 
 export const fetchProjects = async (setProjects) => {
     try {
-        const res = await fetch("/api/projects");
+        const res = await fetch("https://task-manager-copy.onrender.com/api/projects");
         const data = await res.json();
         setProjects(data);
     } catch (error) {

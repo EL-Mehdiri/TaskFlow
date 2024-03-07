@@ -13,7 +13,9 @@ const VerifyEmail = () => {
     // console.log(token);
     const fetchVerifyEmail = async () => {
       try {
-        const res = await fetch(`/api/auth/verify-email?token=${token}`);
+        const res = await fetch(
+          `https://task-manager-copy.onrender.com/api/auth/verify-email?token=${token}`
+        );
 
         if (res.ok) {
           setMessage("Email verified successfully!");

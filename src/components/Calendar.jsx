@@ -14,7 +14,9 @@ function Calendar() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch(`/api/projects`);
+        const res = await fetch(
+          `https://task-manager-copy.onrender.com/api/projects`
+        );
         if (!res.ok) {
           throw new Error("Failed to fetch projects");
         }
