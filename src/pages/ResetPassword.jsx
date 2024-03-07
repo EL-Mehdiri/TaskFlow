@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import vector from "../assets/password.jpg";
+import image from "../assets/password.jpg";
 
 const ResetPassword = () => {
   const location = useLocation();
@@ -66,7 +66,7 @@ const ResetPassword = () => {
   return (
     <div className="grid lg:grid-cols-2 md:grid-cols-1 mx-auto p-10 ">
       <div className="max-w-2xl ">
-        <img src={vector} alt="" className="" />
+        <img src={image} alt="" className="" />
       </div>
 
       <div className="image max-w-3xl p-16  my-20 rounded-xl shadow-xl ">
